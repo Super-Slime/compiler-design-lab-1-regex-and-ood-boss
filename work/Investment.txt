@@ -1,0 +1,44 @@
+
+package   bankaccount;
+
+
+
+
+public class InvestmentAccount extends BankAccount {
+    private final double DEPOSIT_INTEREST = 0.15;
+    private final double WITHDRAW_INTEREST = 0.05;
+    
+    
+    public int investmentDepositAmount(){
+        System.out.println("Enter Amount you want to deposit");
+        amount = console.nextInt();
+        return amount;
+    }
+    
+    public double investmentDepositBalance(){
+        
+        balance = balance + amount - (amount*DEPOSIT_INTEREST);
+        System.out.println("Balance is = "+ balance);
+        return balance;
+    }
+    
+    public int investmentWithdrawAmount(){
+        System.out.println("Enter amount you want to withdraw");
+        amount = console.nextInt();
+        return amount;
+    }
+    
+    public double investmentWithdrawBalance(){
+        if(balance >= amount){
+            balance = balance - amount -(amount*WITHDRAW_INTEREST);
+            System.out.println("Balance is = "+ balance);
+        }
+        
+        else{
+            System.out.println("You have insufficient funds.");
+        }
+        return balance;
+    }
+    
+}
+I

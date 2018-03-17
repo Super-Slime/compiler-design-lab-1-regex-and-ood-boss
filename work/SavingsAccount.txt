@@ -1,0 +1,42 @@
+
+package   bankaccount;
+
+
+public class SavingsAccount extends BankAccount {
+    private final double  WITHDRAW_INTEREST = 0.05;
+    private final double DEPOSIT_INTEREST = 0.10;
+    
+    public int savingsDepositAmount(){
+        System.out.println("Enter Amount you want to deposit");
+        amount = console.nextInt();
+        return amount;
+    }
+    
+    
+    public double savingsDepositBalance(){
+        balance = balance + amount - (amount*DEPOSIT_INTEREST);
+        System.out.println("Balance is "+ balance);
+        return balance;
+    }
+    
+    
+    public int savingWithdrawAmount(){
+        System.out.println("Enter Amount you want to deposit");
+        amount = console.nextInt();
+        return amount;
+    }
+    
+    public double savingsWithdrawBalance(){
+        if(balance >= amount){
+            balance = balance - amount + (amount*WITHDRAW_INTEREST);
+            System.out.println("Balance is "+ balance);
+        }
+        
+        else{
+            System.out.println("You have insufficient funds.");
+        }
+        return balance;
+    }
+    
+    
+}

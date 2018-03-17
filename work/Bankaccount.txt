@@ -1,0 +1,132 @@
+
+package bankaccount;
+
+import java.util.Scanner;
+
+public class BankAccount {
+    protected int accountName;
+    protected double balance;
+    protected int amount;
+    private int transactionOption;
+    
+    
+    static Scanner console = new Scanner(System.in);
+    
+    
+    
+    public void transactonInstructions(){
+        System.out.println("Enter the following to");
+        System.out.println("1*  Deposit");
+        System.out.println("2*  Withdraw");
+        System.out.println("0*  Exit");
+    }
+    
+    public void accountInstructions(){
+        System.out.println("Enter the following to");
+        System.out.println("1* Check account");
+        System.out.println("2* Savings account");
+        System.out.println("3* Investment account");
+        
+    }
+    
+    
+    public void transactionOption(){
+        CheckAccount check = new CheckAccount();
+        SavingsAccount savings = new SavingsAccount();
+        InvestmentAccount investment = new InvestmentAccount();
+        
+        transactionOption = console.nextInt();
+        
+        
+        while(transactionOption != 0){
+            switch(transactionOption){
+                case 1:
+                        accountInstructions();
+                        accountName = console.nextInt();
+                        // Deposit Area
+                        
+                            switch(accountName){
+                                case 1:
+                                    
+                                    check.depositAmount();
+                                    check.depositBalance();
+                                    break;
+                                    
+                                case 2:
+                                    
+                                    savings.savingsDepositAmount();
+                                    savings.savingsDepositBalance();
+                                    break;
+                                    
+                                case 3:
+                                    investment.investmentDepositAmount();
+                                    investment.investmentDepositBalance();
+                                    break;
+                                    
+                                default:
+                                    System.out.println("Invalid try Again");
+                                    accountInstructions();
+                                    accountName = console.nextInt();
+                              
+                                 
+                            }
+                        
+                        
+                    break;
+                    
+                case 2:
+                    // Withdraw Area
+                    
+                    accountInstructions();
+                        accountName = console.nextInt();
+                        
+                        while(accountName != 0){
+                            switch(accountName){
+                                case 1:
+                                    check.withdrawAmount();
+                                    check.withdrawBalance();
+                                    break;
+                                // Savaings
+                                case 2:
+                                    savings.savingWithdrawAmount();
+                                    savings.savingsWithdrawBalance();
+                                    break;
+                                //Investment 
+                                case 3:
+                                    investment.investmentWithdrawAmount();
+                                    investment.investmentWithdrawBalance();
+                                    break;
+                                    
+                                default:
+                                    System.out.println("Invalid Try for the last Time");
+                                    accountInstructions();
+                                    accountName = console.nextInt();
+                              
+                                 
+                            }
+                        }
+                    
+                    break;
+                    
+                default:
+                    System.out.println("Invalid Try again");
+                    transactonInstructions();
+                    transactionOption = console.nextInt();
+                    break;     
+            }
+            transactonInstructions();
+            transactionOption = console.nextInt();
+        }
+        
+    }
+    
+    
+    
+    public static void main(String[] args) {
+        BankAccount bank = new BankAccount();
+        
+        bank.transactonInstructions();
+        bank.transactionOption();
+    }
+    
+}

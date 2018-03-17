@@ -1,0 +1,49 @@
+
+
+package   bankaccount;
+
+import java.util.Scanner;
+
+
+public class CheckAccount extends BankAccount {
+    private final double WITHDRAW_INTEREST = 0.5;
+    private final double DEPOSIT_INTEREST = 0.2;
+    
+    
+    
+    Scanner console = new Scanner(System.in);
+    
+    public int depositAmount(){
+        System.out.println("Enter Amount you want to deposit");
+        amount = console.nextInt();
+        
+        return amount;
+    }
+    
+    public double depositBalance(){
+        balance = balance + amount - (amount*DEPOSIT_INTEREST);
+        System.out.println("Balance is = "+ balance);
+        return balance;
+    }
+    
+    public int withdrawAmount(){
+        System.out.println("Enter amount you want to withdraw");
+        amount = console.nextInt();
+        return amount;
+    }
+    
+    public double withdrawBalance(){
+        if(balance >= amount){
+            balance = balance - amount -(amount*WITHDRAW_INTEREST);
+            System.out.println("Balance is = "+ balance);
+        }
+        
+        else{
+            System.out.println("You have insufficient funds.");
+        }
+        
+        return balance;
+    }
+    
+    
+}
